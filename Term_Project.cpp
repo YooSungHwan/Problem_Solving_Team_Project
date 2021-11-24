@@ -4,7 +4,7 @@
 
 struct PERSON {
 	int tag;
-	char date[30];
+	char date[20];
 	char fee_paid[10];
 	char name[25];
 	int age;
@@ -15,19 +15,19 @@ struct PERSON {
 
 void init(struct PERSON* p) {
 	FILE* myInFile;
+	int i = 0, j = 1, k = 0;
+	char date[20];
+
 	myInFile = fopen("registraion_data.txt", "r");
+
 	if (myInFile == NULL) {
 		printf("Could not open Be Opened!\n");
 	}
 	else {
-		for (int i = 0; i < MAX; i++) {
-			fscanf(myInFile, "%d", &p[i].tag);
-			fgetc(myInFile);
-			fgets(p[i].date, sizeof(20), myInFile);
-			fgets(p[i].fee_paid, sizeof(10), myInFile);
-
-			printf("%d %s %s\n", p[i].tag, p[i].date,p[i].fee_paid);
+		while (fscanf(myInFile, "%d/%[^/]/%[^/]/%[^/]/%d/%[^/]/%s", &p[i].tag, &p[i].date, &p[i].fee_paid, &p[i].name, &p[i].age, &p[i].organ, &p[i].job) != EOF) {
+			i++;
 		}
+
 	}
 	fclose(myInFile);
 
