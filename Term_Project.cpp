@@ -15,7 +15,7 @@ struct PERSON {
 	struct PERSON* next;
 };
 
-void init(struct PERSON* p, char* string, int* count) { // initialize file
+void init(struct PERSON* p, const char* string, int* count) { // initialize file
 	FILE* myInFile;
 	int i = 0;
 
@@ -42,7 +42,7 @@ void linking(struct PERSON* p, int count) { // linking the struct
 	}
 }
 
-int string_check(char* a, char* b) { // I use string_check because of Choi
+int string_check(const char* a, const char* b) { // I use string_check because of Choi
 	int j = 0;
 	for (int i = 0; a[i] != '\0'; i++) {
 		if (a[i] == b[j])
@@ -55,7 +55,7 @@ int string_check(char* a, char* b) { // I use string_check because of Choi
 	return 0;
 }
 
-void search_in_array(struct PERSON* p, int count, char* check, char* string) {
+void search_in_array(struct PERSON* p, int count, const char* check, const char* string) {
 	for (int i = 0; i < count; i++) { // p 1-1
 		if ((string_check(p[i].name, string)) == 1 && (strcmp(check, "name")) == 0) {
 			printf("%d/%s/%s/%s/%d/%s/%s\n", p[i].tag, p[i].date, p[i].fee_paid, p[i].name, p[i].age, p[i].organ, p[i].job);
@@ -66,7 +66,7 @@ void search_in_array(struct PERSON* p, int count, char* check, char* string) {
 	}
 }
 
-void search_in_linked_list(struct PERSON* p, int count, char* check, char* string) {
+void search_in_linked_list(struct PERSON* p, int count, const char* check, const char* string) {
 	for (int i = 0; i < count; i++) { // p 1-2
 		if ((string_check(p[i].name, "Choi")) == 1 && (strcmp(check, "name")) == 0) {
 			printf("%d/%s/%s/%s/%d/%s/%s\n", p[i].tag, p[i].date, p[i].fee_paid, p[i].name, p[i].age, p[i].organ, p[i].job);
